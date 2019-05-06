@@ -1,12 +1,15 @@
 <template>
   <div class="about">
     <mu-container>
-      <div>
-        <mu-select label="Normal" v-model="option_value" full-width @change="changeSelectValue">
+      <div style="display: flex">
+        <mu-select label="等级" v-model="option_value" @change="changeSelectValue" style="width: 50%">
           <mu-option v-for="option in options" :key="option.key" :label="option.key" :value="option.value"></mu-option>
         </mu-select>
+        <mu-select label="类别" v-model="tag_value" @change="changeSelectValue" style="width: 50%">
+          <mu-option v-for="option in tag_list" :key="option.key" :label="option.key" :value="option.value"></mu-option>
+        </mu-select>
       </div>
-      <mu-expansion-panel :expand="panel === 'panel1'" @change="toggle('panel1')" v-for="item in list" v-bind:key="item.objectId">
+      <mu-expansion-panel  @change="toggle('panel1')" v-for="item in list" v-bind:key="item.objectId" style="margin-bottom: 15px">
         <div slot="header">
          <p> {{item.title}}</p>
          <p style="font-size: 10px">Tips:{{item.tips}}</p>
@@ -32,8 +35,12 @@ export default {
   data () {
     return {
       option_value: 'android_low',
+      tag_value: '',
       options: [
         { key: '安卓初级', value: 'android_low' }, { key: '安卓中级', value: 'android_mid' }, { key: '安卓高级', value: 'android_high' }
+      ],
+      tag_list: [
+        { key: '线程', value: 'thread' }, { key: '安卓中级', value: 'android_mid' }, { key: '安卓高级', value: 'android_high' }
       ],
       value: '',
       list: [],
