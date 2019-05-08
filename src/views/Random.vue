@@ -12,7 +12,7 @@
       <mu-expansion-panel  @change="toggle('panel1')" v-for="item in list" v-bind:key="item.objectId" style="margin-bottom: 15px">
         <div slot="header">
          <p> {{item.title}}</p>
-         <p style="font-size: 10px;color: #999999">Tips:{{item.tips}}</p>
+         <p style="font-size: 10px;color: #999999" v-if="item.tips !==null">Tips:{{item.tips}}</p>
         </div>
         <div>
           <mavon-editor v-html=changeMarkDown(item.content) :subfield="false" :defaultOpen="defaultData" :toolbarsFlag="false" :boxShadow="false" @change="changeData" style="background-color: rgb(204, 232, 207);padding: 5px;margin-top: 10px" />

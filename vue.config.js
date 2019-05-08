@@ -26,6 +26,9 @@ const webpackHtmlOptions = {
     'vue': 'Vue',
     'vue-router': 'VueRouter',
     'vuex': 'Vuex',
+    'muse-ui': 'MuseUi',
+    'marked': 'Marked',
+    'mavon-editor': 'MavonEditor',
     'js-cookie': 'Cookies'
   },
   cdn: {
@@ -37,6 +40,9 @@ const webpackHtmlOptions = {
         'https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js',
         'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
         'https://unpkg.com/vuex@3.0.1/dist/vuex.min.js',
+        'https://unpkg.com/muse-ui/dist/muse-ui.js',
+        'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+        'https://cdn.jsdelivr.net/npm/mavon-editor@2.7.4/dist/mavon-editor.min.js',
         'https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js'
       ]
     }
