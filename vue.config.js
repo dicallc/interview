@@ -6,7 +6,7 @@ const outputDir = 'dist'
 const posixJoin = _path => path.posix.join(assetsDir, _path)
 // 导入compression-webpack-plugin
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 // 定义压缩文件类型
 const productionGzipExtensions = ['js', 'css']
 // cdn开关
@@ -23,6 +23,8 @@ const webpackHtmlOptions = {
   //   'https://fff.exmaple.com'
   // ],
   externals: {
+    // 'fastclick': 'FastClick',
+    'hydrogen-js-sdk': 'Bmob',
     'vue': 'Vue',
     'vue-router': 'VueRouter',
     'vuex': 'Vuex',
@@ -37,9 +39,10 @@ const webpackHtmlOptions = {
       css: [
       ],
       js: [
+        // 'https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js',
+        'http://image.dicallc.com/Bmob-1.7.0.min.js',
         'https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js',
         'https://unpkg.com/muse-ui/dist/muse-ui.js',
-        // 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
         'https://cdn.jsdelivr.net/npm/mavon-editor@2.7.4/dist/mavon-editor.min.js',
         'https://cdn.jsdelivr.net/npm/js-cookie@2.2.0/src/js.cookie.min.js',
         'https://cdn.jsdelivr.net/npm/vue-router@3.0.1/dist/vue-router.min.js',
@@ -71,17 +74,17 @@ module.exports = {
         minRatio: 0.8
       }))
       config.plugins.push(
-        // new UglifyJsPlugin({
-        //   uglifyOptions: {
-        //     compress: {
-        //       warnings: false,
-        //       drop_debugger: true,
-        //       drop_console: true
-        //     }
-        //   },
-        //   sourceMap: false,
-        //   parallel: true
-        // })
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            compress: {
+              warnings: false,
+              drop_debugger: true,
+              drop_console: true
+            }
+          },
+          sourceMap: false,
+          parallel: true
+        })
       )
       // 开启cdn状态：externals不进入webpack打包
       if (OPENCDN) {

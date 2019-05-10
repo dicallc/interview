@@ -38,7 +38,6 @@ export default {
     return {
       option_value: 'android_low',
       tag_value: '',
-      options: this.$store.state.tableName,
       tag_list: [
         { key: '线程', value: 'thread' }, { key: '安卓中级', value: 'android_mid' }, { key: '安卓高级', value: 'android_high' }
       ],
@@ -46,6 +45,11 @@ export default {
       list: [],
       panel: '',
       defaultData: 'preview'
+    }
+  },
+  computed: {
+    options: function () {
+      return this.$store.state.tableName
     }
   },
   methods: {
